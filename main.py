@@ -22,7 +22,6 @@ def find_user_intent():
 
     if choice == 'n':
         return 'run_new'
-    
     elif choice == 'l':
         return 'run_load'
     else:
