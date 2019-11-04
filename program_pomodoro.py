@@ -39,7 +39,8 @@ def run(new):
             p.check_tasks()
         
         elif choice == 'b':
-            print('\nNot yet live')
+            # TODO: add the running of a pomodoro
+            p.begin_pomodoro()
 
         else:
             break

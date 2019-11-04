@@ -11,8 +11,9 @@ task_list = [
 '''
 
 class Pomodoro:
-    def __init__(self, tasks = []):
+    def __init__(self, tasks=[], status=False):
         self.tasks = tasks
+        self.status = status
 
     def add_task(self, task):
         self.tasks.append(task)
@@ -46,3 +47,7 @@ class Pomodoro:
     
     def mark_task_complete(self, task):
         self.tasks[task]['complete'] = True
+    
+    def begin_pomodoro():
+        self.status = True
+        
