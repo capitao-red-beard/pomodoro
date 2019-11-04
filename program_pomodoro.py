@@ -9,6 +9,7 @@ def show_commands():
     print('[l]oad a pomodoro session from disk')
     print('[s]ave pomodoro session to disk')
     print('[b]egin the pomodoro session')
+    print('[m]ark a task as complete')
     print('[q]uit to the main menu')
 
 def run():
@@ -53,6 +54,11 @@ def run():
         
         elif choice == 'b':
             p.start_timer()
+        
+        elif choice == 'm':
+            print(p.check_tasks())
+            task = input('Which task did you complete? ')
+            p.mark_task_complete(int(task))
 
         else:
             break

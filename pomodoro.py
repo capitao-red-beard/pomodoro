@@ -51,3 +51,6 @@ class Pomodoro:
             sys.stdout.write("{:2d} seconds remaining".format(difference)) 
             sys.stdout.flush()
             sleep(1)
+    
+    def mark_task_complete(self, task):
+        self.tasks[task]['complete'] = True
