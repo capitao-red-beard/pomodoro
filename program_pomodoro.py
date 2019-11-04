@@ -1,27 +1,20 @@
 from pomodoro import Pomodoro
 
 
-def show_commands():
-    print('[p]rint all pomodoro tasks to terminal')
-    print('[a]dd a new task to your pomodoro session')
-    print('[r]emove a task from your pomodoro session')
-    print('[b] Start the pomodoro session')
-    print('[l]oad a pomodoro session from disk')
-    print('[s]ave pomodoro session to disk')
-    print('[b]egin the pomodoro session')
-    print('[m]ark a task as complete')
-    print('[q]uit to the main menu')
-
-def run():
-    print('******Welcome to your new pomodoro session!******')
-
+def run(new):
     while True:
+        if new == False:
+            load_pomodoro()
+            new = True
+
         show_commands()
         choice = input('What would you like to do? ')
 
         if choice == 'a':
             if not p:
                 p = Pomodoro()
+            else:
+                load_pomodoro()
 
             while True:
                 task = input('Task: ')
@@ -44,21 +37,24 @@ def run():
             filename = input('Please enter a name for your save: ')
             p.save_tasks(filename=filename)
         
-        elif choice == 'l':
-            print(Pomodoro.show_saved_pomodoros())
-            choice = input('Please select a pomodoro to load: ')
-            p = Pomodoro(Pomodoro.load_pomodoro(choice))
-        
         elif choice == 'p':
             print(p.check_tasks())
         
         elif choice == 'b':
             p.start_timer()
-        
-        elif choice == 'm':
-            print(p.check_tasks())
-            task = input('Which task did you complete? ')
-            p.mark_task_complete(int(task))
 
         else:
             break
+
+def load_pomodoro():
+    print(Pomodoro.show_saved_pomodoros())
+    choice = input('Please select a pomodoro to load: ')
+    p = Pomodoro(Pomodoro.load_pomodoro(choice))
+
+def show_commands():
+    print('[p]rint all pomodoro tasks to terminal')
+    print('[a]dd a new task to your pomodoro session')
+    print('[r]emove a task from your pomodoro session')
+    print('[s]ave pomodoro session to disk')
+    print('[b]egin the pomodoro session')
+    print('[q]uit to the main menu')
