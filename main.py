@@ -4,29 +4,21 @@ import program_pomodoro
 def main():
     try:
         while True:
-            if find_user_intent() == 'run_new':
+            print('\n[n]ew pomodoro session')
+            print('[l]oad a pomodoro session from disk')
+            print('[q]uit the program \n')
+            choice = input("Please input what you'd like to do: ")
+
+            if choice == 'n':
                 program_pomodoro.run(new=True)
-            elif find_user_intent() == 'run_load':
+            elif choice == 'l':
                 program_pomodoro.run(new=False)
-            else:
+            elif choice == 'q':
                 break
+            else:
+                print('\nPlease input a correct value from the list')
     except KeyboardInterrupt:
         return
-
-
-def find_user_intent():
-    print('[n] Create a new pomodoro session')
-    print('[l]oad a pomodoro session from disk')
-
-    choice = input('What would you like to do: ')
-
-    if choice == 'n':
-        return 'run_new'
-    elif choice == 'l':
-        return 'run_load'
-    else:
-        return 'exit'
-
 
 if __name__ == '__main__':
     main()

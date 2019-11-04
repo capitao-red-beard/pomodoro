@@ -8,50 +8,50 @@ def run(new):
             new = True
 
         show_commands()
-        choice = input('What would you like to do? ')
+        choice = input('\nWhat would you like to do? ')
 
         if choice == 'a':
             if not p:
                 p = Pomodoro()
 
             while True:
-                task = input('Task: ')
+                task = input('\nTask: ')
                 p.add_task({"task": task, "complete": False})
-                response = input('Would you like to add another task? ')
+                response = input('\nWould you like to add another task? ')
 
                 if response == 'n':
                     break
 
         elif choice == 'r':
             try:
-                print(p.check_tasks())
-                to_remove = input('Please select a task to remove: ')
+                p.check_tasks()
+                to_remove = input('\nPlease select a task to remove: ')
                 p.remove_task(int(to_remove))
 
             except UnboundLocalError:
-                print('You have not loaded a pomodoro session, so no tasks can be deleted')
+                print('\nYou have not loaded or created a pomodoro session, so no tasks can be deleted')
         
         elif choice == 's':
-            filename = input('Please enter a name for your save: ')
+            filename = input('\nPlease enter a name for your save: ')
             p.save_tasks(filename=filename)
         
         elif choice == 'p':
-            print(p.check_tasks())
+            p.check_tasks()
         
         elif choice == 'b':
-            p.start_timer()
+            print('\nNot yet live')
 
         else:
             break
 
 def load_pomodoro():
-    print(Pomodoro.show_saved_pomodoros())
-    choice = input('Please select a pomodoro to load: ')
+    Pomodoro.show_saved_pomodoros()
+    choice = input('\nPlease select a pomodoro to load: ')
     p = Pomodoro(Pomodoro.load_pomodoro(choice))
     return p
 
 def show_commands():
-    print('[p]rint all pomodoro tasks to terminal')
+    print('\n[p]rint all pomodoro tasks to terminal')
     print('[a]dd a new task to your pomodoro session')
     print('[r]emove a task from your pomodoro session')
     print('[s]ave pomodoro session to disk')
