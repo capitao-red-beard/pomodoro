@@ -1,8 +1,7 @@
 import json
 import os
-from time import time, sleep
+from time import time
 import sys
-from threading import Timer
 
 
 '''
@@ -17,6 +16,8 @@ class Pomodoro:
     def __init__(self, tasks=[], status=False):
         self.tasks = tasks
         self.status = status
+        self.start_time = 0
+        self.end_time = 0
 
     def add_task(self, task):
         self.tasks.append(task)
@@ -51,14 +52,19 @@ class Pomodoro:
     def mark_task_complete(self, task):
         self.tasks[task]['complete'] = True
 
-    def begin_timer():
-        timer = Timer(1500, self.break_prompt())
-
+    def calculate_end_time(seconds):
+        start_time = int(time())
+        self.end_time = start_time + seconds
+        return self.end_time
     
     def begin_pomodoro():
         # TODO: implement the function 
         self.status = True
+        end_time = calculate_end_time(1500)
+        
+        while True:
+
 
     def break_prompt():
         pause = input('\nHow long will your break be? ')
-        
+
