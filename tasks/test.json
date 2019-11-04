@@ -1,0 +1,14 @@
+[
+    {
+        "task": "clean shoes",
+        "complete": false
+    },
+    {
+        "task": "wash hair",
+        "complete": false
+    },
+    {
+        "task": "clean windows",
+        "complete": false
+    }
+]
