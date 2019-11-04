@@ -36,8 +36,11 @@ class Pomodoro:
     
     @staticmethod
     def load_pomodoro(pomodoro):
-        with open(f'tasks/{pomodoro}.json', 'r', encoding='utf-8') as f:
-            return json.load(f)
+        try:
+            with open(f'tasks/{pomodoro}.json', 'r', encoding='utf-8') as f:
+                return json.load(f)
+        except FileNotFoundError:
+            print('File does not exist')
     
     def start_timer(self):
         start_time = int(time())

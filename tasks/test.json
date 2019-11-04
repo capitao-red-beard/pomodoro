@@ -10,5 +10,9 @@
     {
         "task": "clean windows",
         "complete": false
+    },
+    {
+        "task": "get haircut",
+        "complete": false
     }
 ]

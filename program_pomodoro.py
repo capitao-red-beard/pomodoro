@@ -4,7 +4,7 @@ from pomodoro import Pomodoro
 def run(new):
     while True:
         if new == False:
-            load_pomodoro()
+            p = load_pomodoro()
             new = True
 
         show_commands()
@@ -13,8 +13,6 @@ def run(new):
         if choice == 'a':
             if not p:
                 p = Pomodoro()
-            else:
-                load_pomodoro()
 
             while True:
                 task = input('Task: ')
@@ -50,6 +48,7 @@ def load_pomodoro():
     print(Pomodoro.show_saved_pomodoros())
     choice = input('Please select a pomodoro to load: ')
     p = Pomodoro(Pomodoro.load_pomodoro(choice))
+    return p
 
 def show_commands():
     print('[p]rint all pomodoro tasks to terminal')
