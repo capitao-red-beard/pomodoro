@@ -2,6 +2,8 @@ import json
 import os
 from time import time, sleep
 import sys
+from threading import Timer
+
 
 '''
 task_list = [
@@ -9,6 +11,7 @@ task_list = [
     {"name": "hoover floor", "complete": False}
 ]
 '''
+
 
 class Pomodoro:
     def __init__(self, tasks=[], status=False):
@@ -47,7 +50,15 @@ class Pomodoro:
     
     def mark_task_complete(self, task):
         self.tasks[task]['complete'] = True
+
+    def begin_timer():
+        timer = Timer(1500, self.break_prompt())
+
     
     def begin_pomodoro():
+        # TODO: implement the function 
         self.status = True
+
+    def break_prompt():
+        pause = input('\nHow long will your break be? ')
         
